@@ -3,8 +3,8 @@ The prototype of ChainMore（阡陌），a platform of sharing and managing inte
 
 # Overview
 This project consists of three main parts:
-* WEB: based on Vue.js
-* APP: based on Flutter
+* [WEB](https://github.com/kleon1024/ChainMore-WEB-Vue) : based on Vue.js
+* [APP](https://github.com/kleon1024/ChainMore-APP-Flutter) : based on Flutter
 * [API](https://github.com/kleon1024/ChainMore-API-Flask) : based on Flask
 
 # Design
