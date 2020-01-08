@@ -7,4 +7,4 @@ services:
       context: .
     environment:
       - VIRTUAL_HOST=api.kleon.space
-      - LETSENCRYPY_HOST=api.kleon.space
+      - LETSENCRYPT_HOST=api.kleon.space
