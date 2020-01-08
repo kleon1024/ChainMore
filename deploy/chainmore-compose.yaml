@@ -1,0 +1,10 @@
+version: '2'
+services:
+  chainmore:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: .
+    environment:
+      - VIRTUAL_HOST=api.kleon.space
+      - LETSENCRYPY_HOST=api.kleon.space
