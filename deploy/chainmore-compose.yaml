@@ -8,3 +8,5 @@ services:
     environment:
       - VIRTUAL_HOST=api.kleon.space
       - LETSENCRYPT_HOST=api.kleon.space
+    volumes:
+      - $HOME/chainmore:/workspace
