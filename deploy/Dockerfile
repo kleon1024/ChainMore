@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
 LABEL maintainer="Ding Li <dingli.cm@gmail.com>"
+
+ADD ./sources.list.tx /etc/apt/sources.list
+
 RUN apt-get update && apt-get install -y python3 python3-dev python3-pip python3-venv git
 
 RUN git clone https://github.com/kleon1024/ChainMore-API-Flask chainmore
