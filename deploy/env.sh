@@ -4,3 +4,4 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo apt-get install -y git python3 python3-pip python3-venv
 
 git clone https://github.com/kleon1024/ChainMore-API-Flask $HOME/chainmore
+mkdir $HOME/chainmore/apk
