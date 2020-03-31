@@ -3,5 +3,5 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.25.0/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 sudo apt-get install -y git python3 python3-pip python3-venv
 
-git clone https://github.com/kleon1024/ChainMore-API-Flask $HOME/chainmore
-mkdir $HOME/chainmore/apk
+cd $HOME
+git clone --recursive https://github.com/kleon1024/ChainMore chainmore
