@@ -1,0 +1,49 @@
+version: '3.5'
+
+networks:
+  backend:
+    name: backend
+    driver: bridge
+  nginx-proxy:
+    external:
+      name: nginx-proxy
+
+services:
+  postgres:
+    networks:
+      - nginx-proxy
+      - backend
+    restart: always
+    image: postgres:12.2 # use latest official postgres version
+    environment:
+      - POSTGRES_USER=chainmore
+      - POSTGRES_PASSWORD=hellochainmore
+      - POSTGRES_DB=chainmore_db
+    volumes:
+      - database-data:/var/lib/postgresql/data/ # persist data even if container shuts down
+    
+  frontend:
+    networks:
+      - nginx-proxy
+      - backend
+    restart: always
+    image: dockerkleon/chainmore:frontend
+    environment:
+      - VIRTUAL_HOST=api.chainmore.fun
+      - LETSENCRYPT_HOST=api.chainmore.fun
+      - LETSENCRYPT_EMAIL=dingli.cm@gmail.com
+      - NODE_ENV=production
+
+  backend:
+    networks:
+      - nginx-proxy
+    restart: always
+    image: dockerkleon/chainmore:backend
+    environment:
+      - FLASK_CONFIG=production
+
+volumes:
+  database-data: # named volumes can be managed easier using docker-compose
+  certs:
+  vhost:
+  html:

@@ -1,0 +1,41 @@
+version: '3.5'
+
+networks:
+  nginx-proxy:
+    name: nginx-proxy
+    driver: bridge
+
+services:
+  nginx-proxy:
+    networks:
+      - nginx-proxy
+    restart: always
+    image: jwilder/nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "vhost:/etc/nginx/vhost.d"
+      - "html:/usr/share/nginx/html"
+      - "/var/run/docker.sock:/tmp/docker.sock:ro"
+      - "certs:/etc/nginx/certs:ro"
+    labels:
+      - com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy
+
+  letsencrypt-nginx-proxy-companion:
+    networks:
+      - nginx-proxy
+    restart: always
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "certs:/etc/nginx/certs:rw"
+      - "vhost:/etc/nginx/vhost.d"
+      - "html:/usr/share/nginx/html"
+    depends_on:
+      - nginx-proxy
+
+volumes:
+  certs:
+  vhost:
+  html:
