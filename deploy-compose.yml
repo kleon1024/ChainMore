@@ -29,8 +29,8 @@ services:
     restart: always
     image: dockerkleon/chainmore:frontend
     environment:
-      - VIRTUAL_HOST=api.chainmore.fun
-      - LETSENCRYPT_HOST=api.chainmore.fun
+      - VIRTUAL_HOST=www.chainmore.fun
+      - LETSENCRYPT_HOST=www.chainmore.fun
       - LETSENCRYPT_EMAIL=dingli.cm@gmail.com
       - NODE_ENV=production
 
@@ -41,6 +41,9 @@ services:
     image: dockerkleon/chainmore:backend
     environment:
       - FLASK_CONFIG=production
+      - VIRTUAL_HOST=api.chainmore.fun
+      - LETSENCRYPT_HOST=api.chainmore.fun
+      - LETSENCRYPT_EMAIL=dingli.cm@gmail.com
 
 volumes:
   database-data: # named volumes can be managed easier using docker-compose
