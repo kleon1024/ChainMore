@@ -46,10 +46,12 @@ services:
       - LETSENCRYPT_EMAIL=dingli.cm@gmail.com
     volumes:
       - whooshee:/app/api/whooshee
+      - migrations:/app/api/migrations
 
 volumes:
   database-data: # named volumes can be managed easier using docker-compose
   whooshee:
+  migrations:
   certs:
   vhost:
   html:
